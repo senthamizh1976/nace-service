@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  mariadb:
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'nacedb'
+      MYSQL_USER: 'nace-user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - nace-db:/var/lib/mariadb
+volumes:
+  nace-db:

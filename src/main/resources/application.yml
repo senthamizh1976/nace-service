@@ -1,0 +1,33 @@
+
+server:
+  port: 9090
+  servlet:
+    context-path: /nace-service
+
+info:
+  app:
+    name: NACE Service
+    description: Programming exercise - NACE Service
+    version: '@project.version@'
+
+logging:
+  path: /var/log/naceservice
+  file: app
+  level:
+    root: INFO
+
+spring:
+  #main:
+    #allow-circular-references: true
+  data.rest.basePath: /nace-service/data
+  datasource:
+    url: jdbc:mysql://localhost:3306/nacedb?relaxAutoCommit=true&useSSL=false
+    username: nace-user
+    password: password
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 1
+  jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  #jpa.hibernate.ddl-auto: validate
+  jpa.open-in-view: false
+

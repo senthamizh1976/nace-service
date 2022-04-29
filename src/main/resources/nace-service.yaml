@@ -1,0 +1,121 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Programming Exercise - NACE Details",
+    "description": "Programming Exercise - NACE Details",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9090/nace-service",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/nace-details": {
+      "post": {
+        "tags": [
+          "nace-controller"
+        ],
+        "operationId": "putNaceDetails",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NaceDetailsDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NaceDetailsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nace-details/{orderId}": {
+      "get": {
+        "tags": [
+          "nace-controller"
+        ],
+        "operationId": "getNaceDetails",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NaceDetailsDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "NaceDetailsDto": {
+        "required": [
+          "order"
+        ],
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "level": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "code": {
+            "type": "string"
+          },
+          "parent": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "itemIncludes": {
+            "type": "string"
+          },
+          "itemAlsoIncludes": {
+            "type": "string"
+          },
+          "rulings": {
+            "type": "string"
+          },
+          "itemExcludes": {
+            "type": "string"
+          },
+          "refToIsic": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
